@@ -1,0 +1,25 @@
+h1 Pages#home
+
+-if current_user && current_user.admin
+    =link_to "Sign out", destroy_user_session_path, method: :delete
+    br
+    br
+    =link_to "Aeroplanes", aeroplanes_path
+    br
+    br
+    =link_to "Flights", flights_path
+    
+-elsif current_user
+    =link_to "Sign out", destroy_user_session_path, method: :delete
+    br
+    br
+    =link_to "Book", flights_search_path
+    
+
+
+-else
+    =link_to "Sign up", new_user_registration_path
+    br
+    br
+    =link_to "Log in", new_user_session_path
+

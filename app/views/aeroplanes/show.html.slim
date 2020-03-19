@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Model:
+  = @aeroplane.model
+p
+  strong Number of seats:
+  = @aeroplane.number_of_seats
+
+=> link_to 'Edit', edit_aeroplane_path(@aeroplane)
+'|
+=< link_to 'Back', aeroplanes_path

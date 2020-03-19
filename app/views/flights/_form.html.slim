@@ -1,0 +1,29 @@
+= form_for @flight do |f|
+  - if @flight.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@flight.errors.count, "error")} prohibited this flight from being saved:"
+      ul
+        - @flight.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :departure
+    = f.time_select :departure
+  .field
+    = f.label :arrival
+    = f.time_select :arrival
+  .field
+    = f.label :source
+    = f.text_field :source
+  .field
+    = f.label :destination
+    = f.text_field :destination
+  .field
+    = f.label :aeroplane
+    = f.collection_select :aeroplane_id, Aeroplane.all, :id, :model
+  br
+  br
+  .actions = f.submit

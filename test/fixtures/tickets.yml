@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seat_class: MyString
+  seat_number: MyString
+  total_amount: 
+  pnr: MyString
+
+two:
+  seat_class: MyString
+  seat_number: MyString
+  total_amount: 
+  pnr: MyString

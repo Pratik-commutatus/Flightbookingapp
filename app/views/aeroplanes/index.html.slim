@@ -1,0 +1,29 @@
+h1 Listing aeroplanes
+
+table class="table table-hover"
+  thead
+    tr
+      th Model
+      th Number of seats
+      th FC fare
+      th Business fare
+      th Economy fare
+      th
+      th
+      th
+
+  tbody
+    - @aeroplanes.each do |aeroplane|
+      tr
+        td = aeroplane.model
+        td = aeroplane.number_of_seats
+        td = aeroplane.first_class_base_fare
+        td = aeroplane.business_base_fare
+        td = aeroplane.economy_base_fare
+        td = link_to 'Show', aeroplane
+        td = link_to 'Edit', edit_aeroplane_path(aeroplane)
+        td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Aeroplane', new_aeroplane_path

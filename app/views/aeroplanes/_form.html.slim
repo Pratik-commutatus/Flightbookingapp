@@ -1,0 +1,54 @@
+= form_for @aeroplane do |f|
+  - if @aeroplane.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@aeroplane.errors.count, "error")} prohibited this aeroplane from being saved:"
+      ul
+        - @aeroplane.errors.full_messages.each do |message|
+          li = message
+
+  table
+    tr
+      td
+      td
+        .field
+          = f.label :model
+          = f.text_field :model
+        .field
+          = f.label :number_of_seats
+          = f.text_field :number_of_seats
+          br
+          br
+          br
+          br
+    tr
+      td
+        .field
+          = f.label :first_class_rows
+          = f.text_field :first_class_rows
+        .field
+          = f.label :first_class_columns
+          = f.text_field :first_class_columns
+        .field
+          = f.label :first_class_base_fare
+          = f.text_field :first_class_base_fare
+      td
+        .field
+          = f.label :business_rows
+          = f.text_field :business_rows
+        .field
+          = f.label :business_columns
+          = f.text_field :business_columns   
+        .field
+          = f.label :business_base_fare
+          = f.text_field :business_base_fare    
+      td
+        .field
+          = f.label :economy_rows
+          = f.text_field :economy_rows
+        .field
+          = f.label :economy_columns
+          = f.text_field :economy_columns
+        .field
+          = f.label :economy__base_fare
+          = f.text_field :economy_base_fare
+  .actions = f.submit
