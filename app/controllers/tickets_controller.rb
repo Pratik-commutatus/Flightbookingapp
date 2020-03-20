@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
     @ticket.build_passenger
+    @aeroplanes=Aeroplane.all
   end
 
   # GET /tickets/1/edit
@@ -27,6 +28,16 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.flight_id = params[:flight_id] 
+    @ticket.pnr = "#{@ticket.seat_class[0..1].upcase}"+"#{@ticket.seat_number}"+"F"+"#{@ticket.flight_id}"+"P"+"#{@ticket.passenger_id}"
+    debugger
+    if @ticket.seat_class.casecmp("Business")==0
+      @ticket.total_amount= @ticket.flight.aeroplane.business_base_fare
+    elsif @ticket.seat_class.casecmp("First Class")==0
+      @ticket.total_amount= @ticket.flight.aeroplane.first_class_base_fare
+    else @ticket.seat_class.casecmp("Economy")==0
+      @ticket.total_amount= @ticket.flight.aeroplane.economy_base_fare
+    end
+
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }

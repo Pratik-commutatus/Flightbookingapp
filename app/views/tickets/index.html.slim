@@ -3,6 +3,7 @@ h1 Listing tickets
 table
   thead
     tr
+      th Passenger name
       th Seat class
       th Seat number
       th Total amount
@@ -14,6 +15,7 @@ table
   tbody
     - @tickets.each do |ticket|
       tr
+        td = ticket.passenger.name
         td = ticket.seat_class
         td = ticket.seat_number
         td = ticket.total_amount
@@ -25,3 +27,6 @@ table
 br
 
 = link_to 'New Ticket', new_ticket_path
+br
+br
+= link_to 'Book Another Ticket', flights_search_path

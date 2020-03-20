@@ -1,0 +1,15 @@
+/ = Flight.where(id: params[:flight_id])
+/ br
+
+- current_aeroplane = Flight.find(params[:flight_id]).aeroplane
+- b_r = current_aeroplane.business_rows
+- b_c = current_aeroplane.business_columns
+- f_c_r = current_aeroplane.first_class_rows
+- f_c_c = current_aeroplane.first_class_columns
+- e_r = current_aeroplane.economy_rows
+- e_c = current_aeroplane.economy_columns
+
+- for i in 1..e_c
+    - for j in 1..e_r
+        = f.radio_button :seat_number, "A+#{j}"
+  

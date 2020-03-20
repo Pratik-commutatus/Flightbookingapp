@@ -1,3 +1,5 @@
+
+
 = form_for @ticket do |f|
   - if @ticket.errors.any?
     #error_explanation
@@ -5,6 +7,9 @@
       ul
         - @ticket.errors.full_messages.each do |message|
           li = message
+          
+  .field
+    == render 'seatconfig'
 
   .field
     = f.label :seat_class
@@ -12,12 +17,6 @@
   .field
     = f.label :seat_number
     = f.text_field :seat_number
-  .field
-    = f.label :total_amount
-    = f.text_field :total_amount
-  .field
-    = f.label :pnr
-    = f.text_field :pnr
   = f.fields_for :passenger do |p|
     = p.hidden_field :user_id, value: current_user.id
     = p.label :passenger_name
