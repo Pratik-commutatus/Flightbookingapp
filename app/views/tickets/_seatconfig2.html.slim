@@ -1,7 +1,5 @@
-/ = Flight.where(id: params[:flight_id])
-/ br
-
-- current_aeroplane = Flight.find(params[:flight_id]).aeroplane
+- flight_id = @ticket.flight_id
+- current_aeroplane = Flight.find(flight_id).aeroplane
 - b_r = current_aeroplane.business_rows
 - b_c = current_aeroplane.business_columns
 - f_c_r = current_aeroplane.first_class_rows
@@ -16,7 +14,7 @@ h3 Economy Class
     - column_alphabet = column_alphabet.next
     br
     - for j in 1..e_r/2
-        - if Flight.find(params[:flight_id]).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
+        - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
             .field class="seatcolumn"
                 = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled:true
                 = f.label :seat_number, "#{column_alphabet}"+"#{j}"
@@ -31,7 +29,7 @@ h3 Economy Class
 
 
     - for j in (e_r/2)+1..e_r
-        - if Flight.find(params[:flight_id]).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
+        - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
             .field class="seatcolumn"
                  = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled: true
                  = f.label :seat_number, "#{column_alphabet}"+"#{j}"
@@ -43,4 +41,3 @@ h3 Economy Class
             p4 &nbsp
             
         
-  
