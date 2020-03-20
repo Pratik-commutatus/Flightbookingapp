@@ -28,8 +28,14 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.flight_id = params[:flight_id] 
+    
+
+    @seatarray=@ticket.seat_number.split('.')
+    @ticket.seat_class=@seatarray[0]
+    @ticket.seat_number=@seatarray[1]
+
     @ticket.pnr = "#{@ticket.seat_class[0..1].upcase}"+"#{@ticket.seat_number}"+"F"+"#{@ticket.flight_id}"+"P"+"#{@ticket.passenger_id}"
-    debugger
+
     if @ticket.seat_class.casecmp("Business")==0
       @ticket.total_amount= @ticket.flight.aeroplane.business_base_fare
     elsif @ticket.seat_class.casecmp("First Class")==0

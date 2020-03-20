@@ -7,16 +7,13 @@
       ul
         - @ticket.errors.full_messages.each do |message|
           li = message
-          
-  .field
-    == render 'seatconfig'
 
   .field
-    = f.label :seat_class
-    = f.text_field :seat_class
-  .field
-    = f.label :seat_number
-    = f.text_field :seat_number
+    = render partial: 'seatconfig', locals: {f: f}
+
+  / .field
+  /   = f.label :seat_class
+  /   = f.text_field :seat_class
   = f.fields_for :passenger do |p|
     = p.hidden_field :user_id, value: current_user.id
     = p.label :passenger_name

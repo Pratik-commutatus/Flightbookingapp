@@ -18,7 +18,7 @@ table
         td = ticket.passenger.name
         td = ticket.seat_class
         td = ticket.seat_number
-        td = ticket.total_amount
+        td = "Rs." + "#{ticket.total_amount}"
         td = ticket.pnr
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)

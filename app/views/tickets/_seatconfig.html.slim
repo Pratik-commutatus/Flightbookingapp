@@ -8,8 +8,24 @@
 - f_c_c = current_aeroplane.first_class_columns
 - e_r = current_aeroplane.economy_rows
 - e_c = current_aeroplane.economy_columns
+- column_alphabet= '@'
 
+br
+h3 First Class
 - for i in 1..e_c
-    - for j in 1..e_r
-        = f.radio_button :seat_number, "A+#{j}"
+    - column_alphabet = column_alphabet.next
+    br
+    - for j in 1..e_r/2
+        .field class="seatcolumn"
+            = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}"
+            = f.label :seat_number, "#{column_alphabet}"+"#{j}"
+        p4 &nbsp
+    p1 &nbsp; &nbsp; &nbsp    
+    - for j in (e_r/2)+1..e_r
+        .field class="seatcolumn"
+            = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}"
+            = f.label :seat_number, "#{column_alphabet}"+"#{j}"
+        p4 &nbsp
+         
+        
   
