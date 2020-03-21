@@ -1,37 +1,69 @@
-=form_tag flights_search_path 
- .field
-    = label_tag :date
-    = date_field_tag 'date', Date.today
- .field
-    = select_tag "source", options_from_collection_for_select(Flight.all.distinct, "source", "source")
-    '&nbsp
-    = select_tag "destination", options_from_collection_for_select(Flight.all, "destination", "destination")
-    '&nbsp
-    = submit_tag "Search"
 
-br
-br
 
-table class="table table-hover"
-  thead
-    tr
-      th Date
-      th Departure
-      th Arrival
-      th Source
-      th Destination
-      th Aeroplane
-      th
-      th
-      th
 
-  tbody
-    - @flights.each do |flight|
+
+-if current_user && current_user.admin
+    
+    .admin_buttons
+        =link_to "Manage Aeroplanes", aeroplanes_path, class:"btn btn-dark btn-lg linktobutton"
+        br
+        br
+        =link_to "Manage Flights", flights_path, class:"btn btn-dark btn-lg linktobutton"
+    
+-else current_user
+  h1 Search Available Flights
+  br
+  =form_tag flights_search_path 
+  .searchparams
+    .field class="bdate"
+        = label_tag :date, "Boarding Date :"
+        br
+        = date_field_tag 'date', Date.today, class:"form-control"
+    br
+    .field class="from"
+        = label_tag :source, "From :"
+        br
+        = select_tag "source", options_from_collection_for_select(Flight.all.distinct, "source", "source"), class:"form-control"
+        '&nbsp
+    .field class="to"
+        = label_tag :destination, "To :"
+        br
+        = select_tag "destination", options_from_collection_for_select(Flight.all, "destination", "destination"), class:"form-control"
+        '&nbsp
+    .searchbuttonsearch
+     = submit_tag "Search", class:"btn btn-primary"
+
+  br
+  br
+
+  table class="table table-hover"
+    thead
       tr
-        td = flight.date
-        td = flight.departure
-        td = flight.arrival
-        td = flight.source
-        td = flight.destination
-        td = flight.aeroplane.model
-        td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id }
+        th Date
+        th Departure
+        th Arrival
+        th Source
+        th Destination
+        th Aeroplane
+        th
+        th
+        th
+
+    tbody
+      - @flights.each do |flight|
+        tr
+          td = flight.date
+          td = readable_time(flight.departure)
+          td = readable_time(flight.arrival)
+          td = flight.source
+          td = flight.destination
+          td = flight.aeroplane.model
+          td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id }
+
+
+
+/ -else
+/     =link_to "Sign up", new_user_registration_path
+/     br
+/     br
+/     =link_to "Log in", new_user_session_path

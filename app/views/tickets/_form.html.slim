@@ -8,8 +8,8 @@
         - @ticket.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = render partial: 'seatconfig', locals: {f: f}
+  
+  
 
   / .field
   /   = f.label :seat_class
@@ -17,6 +17,26 @@
   = f.fields_for :passenger do |p|
     = p.hidden_field :user_id, value: current_user.id
     = p.label :passenger_name
-    = p.text_field :name
+    br
+    = p.text_field :name, class:"form-control"
+    br
+    br
+
+    = p.label :age
+    br
+    = p.text_field :age, class:"form-control"
+    br
+    br
+
+    = p.label :gender
+    br
+    = p.text_field :gender, class:"form-control"
+
   = hidden_field_tag :flight_id, params[:flight_id] 
-  .actions = f.submit
+  br
+  br
+  '
+  .field
+    = render partial: 'seatconfig', locals: {f: f}
+  br
+  .actions = f.submit class:"btn btn-primary"

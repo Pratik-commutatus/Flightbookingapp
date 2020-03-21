@@ -9,11 +9,61 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <%=render 'layouts/alerts' %>
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <%=link_to "✈ BookMyFlight ✈", flights_search_path, class:"navbar-brand pagename"%>
+      
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">  
+       <% if user_signed_in? %>
+          <div class="styleit">
+          <div class="status"><li>Signed in with: <%=  current_user.email %></li></div>
+					
+          <li> <%= link_to 'My Account', edit_user_registration_path, class:"navbar-brand" %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"navbar-brand" %></li>
+          
+          
+          </div>
+				<% else %>
+					<li><%= link_to 'Log in', new_user_session_path, class:"navbar-brand"  %></li>
+					<li><%= link_to 'Sign up', new_user_registration_path, class:"navbar-brand"  %></li>
+				<% end %>
+
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+  <%# <%= render 'layouts/alerts'%>
     <%= yield %>
+  </div>
   </body>
 </html>

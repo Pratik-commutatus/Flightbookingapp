@@ -1,5 +1,8 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action do 
+    redirect_to new_user_session_path unless current_user
+  end
 
   # GET /tickets
   # GET /tickets.json

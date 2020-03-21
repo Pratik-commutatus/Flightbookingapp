@@ -1,13 +1,11 @@
-h1 Pages#home
 
 -if current_user && current_user.admin
-    =link_to "Sign out", destroy_user_session_path, method: :delete
-    br
-    br
-    =link_to "Aeroplanes", aeroplanes_path
-    br
-    br
-    =link_to "Flights", flights_path
+    
+    .admin_buttons
+        =link_to "Manage Aeroplanes", aeroplanes_path, class:"btn btn-dark btn-lg linktobutton"
+        br
+        br
+        =link_to "Manage Flights", flights_path, class:"btn btn-dark btn-lg linktobutton"
     
 -elsif current_user
     =link_to "Sign out", destroy_user_session_path, method: :delete

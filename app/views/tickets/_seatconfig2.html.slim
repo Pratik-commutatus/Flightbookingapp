@@ -9,35 +9,115 @@
 - column_alphabet= '@'
 
 br
-h3 Economy Class
-- for i in 1..e_c
-    - column_alphabet = column_alphabet.next
-    br
-    - for j in 1..e_r/2
-        - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
-            .field class="seatcolumn"
-                = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled:true
-                = f.label :seat_number, "#{column_alphabet}"+"#{j}"
-            p4 &nbsp
-        - else
-            .field class="seatcolumn"
-                = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}"
-                = f.label :seat_number, "#{column_alphabet}"+"#{j}"
-            p4 &nbsp
-        
-    p1 &nbsp; &nbsp; &nbsp 
+.bookseat
+    .compressed
+    .plane
+        .cockpit
+            h1 Please select a seat
+        .exit.exit--front.fuselage
+        .seating.fuselage
+            .seating_arrangement
+                
+                .first_class
+                    h3 First Class
+                    - for i in 1..f_c_c
+                        - column_alphabet = column_alphabet.next
+                        br
+                        - for j in 1..f_c_r/2
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "First Class", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "First Class."+"#{column_alphabet}"+"#{j}", disabled:true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "First Class."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "First Class."+"#{column_alphabet}"+"#{j}", class:"seat"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "First Class."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            
+                        p1 &nbsp; &nbsp; &nbsp 
 
 
-    - for j in (e_r/2)+1..e_r
-        - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
-            .field class="seatcolumn"
-                 = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled: true
-                 = f.label :seat_number, "#{column_alphabet}"+"#{j}"
-            p4 &nbsp
-        - else 
-            .field class="seatcolumn"
-                 = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}"
-                 = f.label :seat_number, "#{column_alphabet}"+"#{j}"
-            p4 &nbsp
-            
+                        - for j in (f_c_r/2)+1..f_c_r
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "First Class", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "First Class."+"#{column_alphabet}"+"#{j}", disabled: true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "First Class."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else 
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "First Class."+"#{column_alphabet}"+"#{j}"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "First Class."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+
+
+
+
+                .business
+                    h3 Business Class
+                    - for i in 1..b_c
+                        - column_alphabet = column_alphabet.next
+                        br
+                        - for j in 1..b_r/2
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Business", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Business."+"#{column_alphabet}"+"#{j}", disabled:true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Business."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Business."+"#{column_alphabet}"+"#{j}", class:"seat"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Business."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            
+                        p1 &nbsp; &nbsp; &nbsp 
+
+
+                        - for j in (b_r/2)+1..b_r
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Business", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Business."+"#{column_alphabet}"+"#{j}", disabled: true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Business."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else 
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Business."+"#{column_alphabet}"+"#{j}"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Business."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+
+
+
+
+                .economy
+                    h3 Economy Class
+                    - for i in 1..e_c
+                        - column_alphabet = column_alphabet.next
+                        br
+                        - for j in 1..e_r/2
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled:true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Economy."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", class:"seat"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Economy."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            
+                        p1 &nbsp; &nbsp; &nbsp 
+
+
+                        - for j in (e_r/2)+1..e_r
+                            - if Flight.find(flight_id).tickets.where("seat_class LIKE ? AND seat_number LIKE ?", "Economy", "#{column_alphabet}"+"#{j}").count==1
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}", disabled: true
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Economy."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+                            - else 
+                                .field class="seatcolumn"
+                                    = f.radio_button :seat_number, "Economy."+"#{column_alphabet}"+"#{j}"
+                                    = f.label :seat_number, "#{column_alphabet}"+"#{j}", :value => "Economy."+"#{column_alphabet}"+"#{j}"
+                                p4 &nbsp
+        .exit.exit--back.fuselage
         

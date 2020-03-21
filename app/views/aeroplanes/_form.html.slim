@@ -6,49 +6,69 @@
         - @aeroplane.errors.full_messages.each do |message|
           li = message
 
-  table
+  table class="formtable"
+    tr
+      td
+      td
+      td
+    tr
+      td
+      td
+      td
     tr
       td
       td
         .field
           = f.label :model
-          = f.text_field :model
+          br
+          = f.text_field :model,  class:"form-control"
         .field
           = f.label :number_of_seats
-          = f.text_field :number_of_seats
+          br
+          = f.text_field :number_of_seats,  class:"form-control"
           br
           br
           br
           br
+      td
     tr
       td
         .field
           = f.label :first_class_rows
-          = f.text_field :first_class_rows
+          br
+          = f.text_field :first_class_rows,  class:"form-control"
         .field
           = f.label :first_class_columns
-          = f.text_field :first_class_columns
+          br
+          = f.text_field :first_class_columns,  class:"form-control"
         .field
           = f.label :first_class_base_fare
-          = f.text_field :first_class_base_fare
+          br
+          = f.text_field :first_class_base_fare,  class:"form-control"
       td
         .field
           = f.label :business_rows
-          = f.text_field :business_rows
+          br
+          = f.text_field :business_rows,  class:"form-control"
         .field
           = f.label :business_columns
-          = f.text_field :business_columns   
+          br
+          = f.text_field :business_columns   ,  class:"form-control"
         .field
           = f.label :business_base_fare
-          = f.text_field :business_base_fare    
+          br
+          = f.text_field :business_base_fare    ,  class:"form-control"
       td
         .field
           = f.label :economy_rows
-          = f.text_field :economy_rows
+          br
+          = f.text_field :economy_rows,  class:"form-control"
         .field
           = f.label :economy_columns
-          = f.text_field :economy_columns
+          br
+          = f.text_field :economy_columns,  class:"form-control"
         .field
           = f.label :economy__base_fare
-          = f.text_field :economy_base_fare
-  .actions = f.submit
+          br
+          = f.text_field :economy_base_fare,  class:"form-control"
+  .actions = f.submit class:"btn btn-primary"

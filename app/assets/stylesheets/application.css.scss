@@ -1,0 +1,292 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .seatcolumn{
+ display: inline-block;
+ }
+ .seatcolumn input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  .seatcolumn label {
+    display: inline-block;
+    background-color: #ddd;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.seatcolumn input[type="radio"]:checked + label {
+    background-color:#bfb;
+    border-color: #4c4;
+}
+.seatcolumn input[type="radio"]:focus + label {
+    border: 2px dashed #444;
+}
+.seatcolumn label:hover {
+    background-color: #dfd;
+  }
+.seatcolumn input[type="radio"]:disabled + label {
+    background-color: rgb(241, 161, 161);
+    &:hover{
+        cursor: not-allowed;
+    }
+}
+
+.seating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.seating_arrangement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.business{
+    padding-left: 10px;
+    text-align: center;
+}
+.economy{
+    text-align: center;
+}
+.first_class{
+    text-align: center;
+}
+.compressed{
+    /* border: 1px solid black;
+    height: 180px;
+    width: 200px;
+    background-image: url("layout.jpg");
+    background-size: cover;
+    border-radius: 2px; */
+    cursor: pointer;
+}
+/* .bookseat:hover>.compressed{
+    display: none;
+}
+.bookseat:hover>.plane{
+    display: block;
+} */
+
+
+*,*:before,*:after {
+    box-sizing: border-box;
+  }
+  .plane {
+    margin: 20px auto;
+    max-width: 600px;
+    display: none;
+  }
+  
+  .cockpit {
+    height: 250px; 
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 5px solid #d8d8d8;}
+    .cockpit:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 500px;
+      width: 100%;
+      border-radius: 50%;
+      border-right: 5px solid #d8d8d8;
+      border-left: 5px solid #d8d8d8;
+    }
+
+    .exit {
+        position: relative;
+        height: 50px;}
+        .exit:before,
+        .exit:after {
+          content: "EXIT";
+          font-size: 14px;
+          line-height: 18px;
+          padding: 0px 2px;
+          font-family: "Arial Narrow", Arial, sans-serif;
+          display: block;
+          position: absolute;
+          background: green;
+          color: white;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
+        .exit:before {
+          left: 0;
+        }
+        .exit:after {
+          right: 0;
+        }
+      
+ .fuselage {
+        border-right: 5px solid #d8d8d8;
+        border-left: 5px solid #d8d8d8;
+      }
+
+
+
+
+
+
+
+
+
+
+      .navbar-nav { 
+        flex-direction: row;
+    }
+    .adjust{
+        display: flex;
+       
+        justify-content: center;
+        
+    }
+    .status{
+        color: rgb(129, 125, 125);
+        text-align: center;
+    }
+    .styleit{
+        display: flex;
+        justify-content: space-between;
+        /* border: 1px solid white; */
+        width: 430px;
+        align-items: center;
+    }
+    a{ text-decoration: none !important;
+
+    }
+    a:visited{
+        color: #337ab7;
+    }
+    .navbar{
+        margin-bottom: 0px !important;
+        position: fixed !important;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+    .pagename{
+        font-size: 22px !important;
+    }
+    .container{
+        margin-top: 80px;
+       
+    }
+    *{
+        font-family: 'Lato', sans-serif !important;
+        
+        
+     }
+    body{
+        background-color: rgb(220, 241, 170);
+       
+     }
+     .newtext{
+        font-size: 25px;
+    }
+    .backtext{
+        font-size: 19px;
+    }
+    .form-control{
+        width: 200px !important;
+        display: inline-block !important;
+    }
+    .date{
+        display: inline-block;
+    }
+    .card{
+        display: flex;
+        margin: 140px auto;
+        padding: 20px;
+        width: 50%;
+        border-radius: 20px;
+        background-image: linear-gradient(rgb(236, 235, 235), rgba(241, 240, 240, 0.418));
+        box-shadow: 6px 6px 12px grey;
+        
+    }
+    .cardform{
+        display: flex;
+        flex-direction: column;
+        margin: 140px auto;
+        padding: 20px;
+        width: 50%;
+        border-radius: 20px;
+        background-image: linear-gradient(rgb(236, 235, 235), rgba(193, 248, 255, 0.418));
+        box-shadow: 6px 6px 12px grey;
+      
+        
+    }
+    .linktobutton{
+        color: white !important;
+    }
+    .admin_buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    // {
+    //     margin-left: 20px;
+    // }
+    table th, table td{
+        padding: 10px; /* Apply cell padding */
+    }
+    .formtable{
+        border-top: .1px solid #337ab7;
+        
+    
+    }
+    .searchparams{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
+       
+    }
+    .bdate{
+        flex: 3;
+    }
+    .searchbuttonsearch{
+        flex: 1;
+        display: flex;
+        align-self: flex-end;
+        
+        
+    }
+    .to{
+        flex: 3;
+    }
+    .from{
+        flex: 3;
+
+    }

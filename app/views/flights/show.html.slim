@@ -1,24 +1,26 @@
 p#notice = notice
 
-p
-  strong Date:
-  = @flight.date
-p
-  strong Departure:
-  = @flight.departure
-p
-  strong Arrival:
-  = @flight.arrival
-p
-  strong Source:
-  = @flight.source
-p
-  strong Destination:
-  = @flight.destination
-p
-  strong Aeroplane:
-  = @flight.aeroplane
+div class="cardform"
+  p
+    strong Date: 
+    = @flight.date
+  p
+    strong Departure: 
+    = readable_time(@flight.departure)
+  p
+    strong Arrival: 
+    = readable_time(@flight.arrival)
+  p
+    strong Source: 
+    = @flight.source
+  p
+    strong Destination: 
+    = @flight.destination
+  p
+    strong Aeroplane: 
+    = @flight.aeroplane.model
 
-=> link_to 'Edit', edit_flight_path(@flight)
-'|
-=< link_to 'Back', flights_path
+  => link_to 'Edit', edit_flight_path(@flight)
+  '
+  
+  =< link_to 'Back', flights_path

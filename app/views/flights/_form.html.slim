@@ -6,24 +6,30 @@
         - @flight.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :date
-    = f.date_select :date
+  .field class="form control"
+    = f.label :date, class:"date"
+    br
+    = f.date_select :date, { ampm: true, order: [:day, :month, :year] }, { class: "form-control" }
   .field
     = f.label :departure
-    = f.time_select :departure
+    br
+    = f.time_select :departure,{}, { class: "form-control" }
   .field
     = f.label :arrival
-    = f.time_select :arrival
-  .field
+    br
+    = f.time_select :arrival,{}, { class: "form-control" }
+  .field 
     = f.label :source
-    = f.text_field :source
+    br
+    = f.text_field :source,  class:"form-control"
   .field
     = f.label :destination
-    = f.text_field :destination
+    br
+    = f.text_field :destination,  class:"form-control"
   .field
     = f.label :aeroplane
-    = f.collection_select :aeroplane_id, Aeroplane.all, :id, :model
+    br
+    = f.collection_select :aeroplane_id, Aeroplane.all, :id, :model,{}, { class: "form-control" }
   br
   br
-  .actions = f.submit
+  .actions = f.submit class:"btn btn-primary"
