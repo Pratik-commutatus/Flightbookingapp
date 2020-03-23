@@ -30,7 +30,17 @@
 
     = p.label :gender
     br
-    = p.text_field :gender, class:"form-control"
+    = p.label :gender, "Male"
+    p4 &nbsp;
+    p4 &nbsp;
+    = p.radio_button :gender, "male"
+    p4 &nbsp;
+    p4 &nbsp;
+    p4 &nbsp;
+    = p.label :gender, "Female"
+    p4 &nbsp;
+    p4 &nbsp;
+    = p.radio_button :gender, "female"
 
   = hidden_field_tag :flight_id, params[:flight_id] 
   br

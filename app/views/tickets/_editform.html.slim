@@ -16,6 +16,10 @@
   = f.fields_for :passenger do |p|
     = p.hidden_field :user_id, value: current_user.id
     = p.label :passenger_name
-    = p.text_field :name
+    br
+    = p.text_field :name, class:"form-control"
+  br
+  br
   = hidden_field_tag :flight_id, params[:flight_id] 
-  .actions = f.submit
+  .actions = f.submit class:"btn btn-primary"
+  br

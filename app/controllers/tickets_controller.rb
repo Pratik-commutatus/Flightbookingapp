@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action do 
-    redirect_to new_user_session_path unless current_user
+     redirect_to new_user_session_path unless current_user
   end
 
   # GET /tickets
@@ -75,6 +75,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:seat_class, :seat_number, :total_amount, :pnr, :flight_id, passenger_attributes:[:id, :_destroy, :name, :user_id])
+      params.require(:ticket).permit(:seat_class, :seat_number, :total_amount, :pnr, :flight_id, passenger_attributes:[:id, :_destroy, :name, :user_id, :age, :gender])
     end
 end

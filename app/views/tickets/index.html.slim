@@ -1,6 +1,7 @@
-h1 Listing tickets
+h1 All tickets
 
-table
+br
+table class="table table-hover"
   thead
     tr
       th Passenger name
@@ -21,12 +22,11 @@ table
         td = "Rs." + "#{ticket.total_amount}"
         td = ticket.pnr
         td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_ticket_path(ticket)
+        td = link_to 'Edit', edit_ticket_path(ticket),  data: { turbolinks: false }
         td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Ticket', new_ticket_path
-br
-br
-= link_to 'Book Another Ticket', flights_search_path
+/ = link_to 'New Ticket', new_ticket_path, class:"newtext"
+/ br
+= link_to 'Book Another Ticket', flights_search_path, class:"newtext"

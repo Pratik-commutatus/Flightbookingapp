@@ -17,6 +17,9 @@ require('jquery')
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// document.addEventListener("turbolinks:load", function() {
+//     my_func();
+//   })
 $(document).ready(function(){
     $('.compressed').on('click', function(){
         $('.plane').show();

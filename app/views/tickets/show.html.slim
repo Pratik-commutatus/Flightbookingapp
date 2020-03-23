@@ -1,18 +1,18 @@
-p#notice = notice
 
-p
-  strong Seat class:
-  = @ticket.seat_class
-p
-  strong Seat number:
-  = @ticket.seat_number
-p
-  strong Total amount:
-  = @ticket.total_amount
-p
-  strong Pnr:
-  = @ticket.pnr
+.cardform
+  p
+    strong Seat class: 
+    = @ticket.seat_class
+  p
+    strong Seat number: 
+    = @ticket.seat_number
+  p
+    strong Total amount: 
+    = @ticket.total_amount
+  p
+    strong Pnr: 
+    = @ticket.pnr
 
-=> link_to 'Edit', edit_ticket_path(@ticket)
-'|
-=< link_to 'Back', tickets_path
+  => link_to 'Edit', edit_ticket_path(@ticket)
+  '
+  =< link_to 'Back', tickets_path
