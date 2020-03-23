@@ -26,6 +26,15 @@ class Ticket < ApplicationRecord
         elsif seatarray[0].casecmp("Economy")==0 && seats_booked >= total_seats/2
           self.total_amount= flight.aeroplane.economy_base_fare + flight.aeroplane.economy_base_fare/10
         end
+
+        if seatarray[0].casecmp("Business")==0 && seats_booked < total_seats/2
+          self.total_amount= flight.aeroplane.business_base_fare
+        elsif seatarray[0].casecmp("First Class")==0 && seats_booked < total_seats/2
+          self.total_amount= flight.aeroplane.first_class_base_fare
+        elsif seatarray[0].casecmp("Economy")==0 && seats_booked < total_seats/2
+          self.total_amount= flight.aeroplane.economy_base_fare
+        end
+
     end
 
 end
