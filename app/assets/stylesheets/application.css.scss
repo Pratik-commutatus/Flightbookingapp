@@ -200,10 +200,10 @@
     }
     .container{
         margin-top: 80px;
-       
     }
     *{
         font-family: 'Lato', sans-serif !important;
+       
         
         
      }
@@ -311,4 +311,16 @@
     }
     .nomatch{
         color: grey;
+    }
+    .create_aeroplane_button{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .homepage{
+        background-color: grey;
+    }
+    .credentials{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }

@@ -2,7 +2,7 @@
 
 = form_for @ticket do |f|
   - if @ticket.errors.any?
-    #error_explanation
+    #error_explanation class="alert alert-danger"
       h2 = "#{pluralize(@ticket.errors.count, "error")} prohibited this ticket from being saved:"
       ul
         - @ticket.errors.full_messages.each do |message|
@@ -25,6 +25,12 @@
     = p.label :age
     br
     = p.text_field :age, class:"form-control"
+    br
+    br
+
+    = p.label :email, "E-mail"
+    br
+    = p.text_field :email, class:"form-control"
     br
     br
 

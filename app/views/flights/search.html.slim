@@ -11,6 +11,7 @@
         =link_to "Manage Flights", flights_path, class:"btn btn-dark btn-lg linktobutton"
     
 -else
+ 
   h1 Search Available Flights
   br
   br
@@ -24,12 +25,12 @@
     .field class="from"
         = label_tag :source, "From :"
         br
-        = select_tag "source", options_from_collection_for_select(Flight.all.distinct, "source", "source"), class:"form-control"
+        = select_tag "source", options_from_collection_for_select(Flight.select("DISTINCT source"), "source", "source"), class:"form-control"
         '&nbsp
     .field class="to"
         = label_tag :destination, "To :"
         br
-        = select_tag "destination", options_from_collection_for_select(Flight.all, "destination", "destination"), class:"form-control"
+        = select_tag "destination", options_from_collection_for_select(Flight.select("DISTINCT destination"), "destination", "destination"), class:"form-control"
         '&nbsp
     .searchbuttonsearch
      = submit_tag "Search", class:"btn btn-primary"
@@ -65,7 +66,12 @@
             td = flight.source
             td = flight.destination
             td = flight.aeroplane.model
-            td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false }
+            - if current_user
+              td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false}
+            - else
+              td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false, confirm: "You need to log in first"  }
+
+            
 
 
 

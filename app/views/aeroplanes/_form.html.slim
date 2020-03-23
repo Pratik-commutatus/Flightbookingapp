@@ -1,6 +1,6 @@
 = form_for @aeroplane do |f|
   - if @aeroplane.errors.any?
-    #error_explanation
+    #error_explanation class="alert alert-danger"
       h2 = "#{pluralize(@aeroplane.errors.count, "error")} prohibited this aeroplane from being saved:"
       ul
         - @aeroplane.errors.full_messages.each do |message|
@@ -22,6 +22,7 @@
           = f.label :model
           br
           = f.text_field :model,  class:"form-control"
+        br
         .field
           = f.label :number_of_seats
           br
@@ -71,4 +72,6 @@
           = f.label :economy__base_fare
           br
           = f.text_field :economy_base_fare,  class:"form-control"
-  .actions = f.submit class:"btn btn-primary"
+  br
+  .actions-create_aeroplane_button = f.submit class:"btn btn-primary"
+  br
