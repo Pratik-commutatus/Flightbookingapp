@@ -48,8 +48,8 @@
     p4 &nbsp;
     = p.radio_button :gender, "female"
 
-  = f.hidden_field :flight_id, params[:flight_id] 
-  = hidden_field_tag :user_id, value: current_user.id
+  = hidden_field_tag :flight_id, params[:flight_id] 
+  = f.hidden_field :user_id, value: current_user.id
   br
   br
   '
