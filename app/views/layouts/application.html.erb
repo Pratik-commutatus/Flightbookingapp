@@ -40,7 +40,12 @@
        <% if user_signed_in? %>
           <div class="styleit">
           <div class="status"><li>Signed in with: <%=  current_user.email %></li></div>
-					
+					<p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <li> <%= link_to 'My Tickets', tickets_path, class:"navbar-brand" %></li>
           <li> <%= link_to 'My Account', edit_user_registration_path, class:"navbar-brand" %></li>
 					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"navbar-brand" %></li>
           
