@@ -25,12 +25,12 @@
     .field class="from"
         = label_tag :source, "From :"
         br
-        = select_tag "source", options_from_collection_for_select(Flight.select("DISTINCT source"), "source", "source"), class:"form-control"
+        = select_tag "source", options_from_collection_for_select(Flight.distinct.select(:source), "source", "source"), class:"form-control"
         '&nbsp
     .field class="to"
         = label_tag :destination, "To :"
         br
-        = select_tag "destination", options_from_collection_for_select(Flight.select("DISTINCT destination"), "destination", "destination"), class:"form-control"
+        = select_tag "destination", options_from_collection_for_select(Flight.distinct.select(:destination), "destination", "destination"), class:"form-control"
         '&nbsp
     .searchbuttonsearch
      = submit_tag "Search", class:"btn btn-primary"
