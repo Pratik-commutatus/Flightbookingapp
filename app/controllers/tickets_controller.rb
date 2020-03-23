@@ -7,7 +7,8 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all.where(user_id: current_user.id)
+    # @tickets = Ticket.all.where(user_id: current_user.id)
+    @tickets = current_user.passengers
   end
 
   # GET /tickets/1
@@ -75,6 +76,6 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:seat_class, :seat_number, :total_amount, :pnr, :flight_id, passenger_attributes:[:id, :_destroy, :name, :user_id, :age, :gender, :email])
+      params.require(:ticket).permit(:seat_class, :seat_number, :total_amount, :pnr, :flight_id, :user_id, passenger_attributes:[:id, :_destroy, :name, :user_id, :age, :gender, :email])
     end
 end
