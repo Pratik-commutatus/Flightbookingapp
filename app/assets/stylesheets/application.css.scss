@@ -27,10 +27,11 @@
     background-color: #ddd;
     font-family: sans-serif, Arial;
     font-size: 16px;
-    border: 2px solid #444;
+    border: 2px solid rgb(182, 175, 175);
+    font-weight: 1px;
     border-radius: 4px;
-    width: 60px;
-    height: 30px;
+    width: 55px;
+    height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,7 +230,7 @@
         margin: 140px auto;
         padding: 20px;
         width: 28%;
-        border-radius: 20px;
+        border-radius: 10px;
         background-image: linear-gradient(rgb(236, 235, 235), rgba(241, 240, 240, 0.418));
         box-shadow: 6px 6px 12px grey;
         // text-align: center;
