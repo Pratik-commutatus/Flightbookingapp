@@ -46,41 +46,32 @@ class Ticket < ApplicationRecord
 
 
 
-
-      # if seatarray[0].casecmp("Business")==0 && seats_booked >= total_seats/2
-      #   self.total_amount= flight.aeroplane.business_base_fare + flight.aeroplane.business_base_fare/10
-      # elsif seatarray[0].casecmp("First Class")==0 && seats_booked >= total_seats/2
-      #   self.total_amount= flight.aeroplane.first_class_base_fare + flight.aeroplane.first_class_base_fare/10
-      # elsif seatarray[0].casecmp("Economy")==0 && seats_booked >= total_seats/2
-      #   self.total_amount= flight.aeroplane.economy_base_fare + flight.aeroplane.economy_base_fare/10
-      # end
-
-      if seatarray[0].casecmp("Business")==0 && seats_booked > total_seats/2
+      if seatarray[0].casecmp("Business")==0 && seats_booked < total_seats/2
         self.total_amount= flight.aeroplane.business_base_fare
-      elsif seatarray[0].casecmp("First Class")==0 && seats_booked > total_seats/2
+      elsif seatarray[0].casecmp("First Class")==0 && seats_booked < total_seats/2
         self.total_amount= flight.aeroplane.first_class_base_fare
-      elsif seatarray[0].casecmp("Economy")==0 && seats_booked > total_seats/2
+      elsif seatarray[0].casecmp("Economy")==0 && seats_booked < total_seats/2
         self.total_amount= flight.aeroplane.economy_base_fare
       end
 
 
 
 
-      if seatarray[0].casecmp("Business")==0 && seats_booked <= total_seats/2 
+      if seatarray[0].casecmp("Business")==0 && seats_booked >= total_seats/2 
         if seatarray[1].last == b_window1 || seatarray[1].last == b_window2 || seatarray[1].last == b_aisle1 || seatarray[1].last == b_aisle2
           self.total_amount= flight.aeroplane.business_base_fare + flight.aeroplane.business_base_fare/10
         else
           self.total_amount= flight.aeroplane.business_base_fare
         end
       
-      elsif seatarray[0].casecmp("First Class")==0 && seats_booked <= total_seats/2
+      elsif seatarray[0].casecmp("First Class")==0 && seats_booked >= total_seats/2
         if seatarray[1].last == f_window1 || seatarray[1].last == f_window2 || seatarray[1].last == f_aisle1 || seatarray[1].last == f_aisle2
           self.total_amount= flight.aeroplane.first_class_base_fare + flight.aeroplane.first_class_base_fare/10
         else
           self.total_amount= flight.aeroplane.first_class_base_fare
         end
 
-      elsif seatarray[0].casecmp("Economy")==0 && seats_booked <= total_seats/2
+      elsif seatarray[0].casecmp("Economy")==0 && seats_booked >= total_seats/2
         if seatarray[1].last == e_window1 || seatarray[1].last == e_window2 || seatarray[1].last == e_aisle1 || seatarray[1].last == e_aisle2
           self.total_amount= flight.aeroplane.economy_base_fare + flight.aeroplane.economy_base_fare/10
         else
@@ -89,14 +80,7 @@ class Ticket < ApplicationRecord
         
       end
 
-      # if seatarray[0].casecmp("Business")==0 && seats_booked <= total_seats/2
-      #   self.total_amount= flight.aeroplane.business_base_fare
-      # elsif seatarray[0].casecmp("First Class")==0 && seats_booked <= total_seats/2
-      #   self.total_amount= flight.aeroplane.first_class_base_fare
-      # elsif seatarray[0].casecmp("Economy")==0 && seats_booked <= total_seats/2
-      #   self.total_amount= flight.aeroplane.economy_base_fare
-      # end
-
+      
 
     end
 
