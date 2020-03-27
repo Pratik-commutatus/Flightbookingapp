@@ -63,3 +63,4 @@ gem 'erd', '~> 0.6.4'
 
 gem 'jquery-rails'
 
+gem 'prawn'

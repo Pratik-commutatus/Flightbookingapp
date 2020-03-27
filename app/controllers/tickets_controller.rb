@@ -15,6 +15,13 @@ class TicketsController < ApplicationController
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = TicketPrint.new(@ticket)
+        send_data pdf.render, filename: "#{@ticket.passenger.name}.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /tickets/new
