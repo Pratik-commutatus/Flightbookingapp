@@ -15,33 +15,56 @@
   h1 Search Available Flights
   br
   br
-  =form_tag flights_search_path 
-  .searchparams
-    .field class="bdate"
-        = label_tag :date, "Boarding Date :"
-        br
-        = date_field_tag 'date', Date.today, class:"form-control"
-    br
-    .field class="from"
-        = label_tag :source, "From :"
-        br
-        = select_tag "source", options_from_collection_for_select(Flight.distinct.select(:source), "source", "source"), {:prompt => "Enter Origin", class:"form-control"}
-        '&nbsp
-    .field class="to"
-        = label_tag :destination, "To :"
-        br
-        = select_tag "destination", options_from_collection_for_select(Flight.distinct.select(:destination), "destination", "destination"), {:prompt => "Enter Destination", class:"form-control"}
-        '&nbsp
-    .searchbuttonsearch
-     = submit_tag "Search", class:"btn btn-primary"
-
-  br
-  br
+  
   -if(@flights.count==0)
-      hr
-      .nomatch
-        h4 No flights match your search
+    =form_tag flights_search_path
+      .searchparams
+        .field class="bdate"
+            = label_tag :date, "Boarding Date :"
+            br
+            = date_field_tag 'date', Date.today, class:"form-control"
+        br
+        .field class="from"
+            = label_tag :source, "From :"
+            br
+            = select_tag "source", options_from_collection_for_select(Flight.distinct.select(:source), "source", "source", params[:source]), {:prompt => "Enter Origin", class:"form-control"}
+            '&nbsp
+        .field class="to"
+            = label_tag :destination, "To :"
+            br
+            = select_tag "destination", options_from_collection_for_select(Flight.distinct.select(:destination), "destination", "destination", params[:destination]), {:prompt => "Enter Destination", class:"form-control"}
+            '&nbsp
+        .searchbuttonsearch
+          = submit_tag "Search", class:"btn btn-primary"
+
+    br
+    br
+    hr
+    .nomatch
+      h4 No flights match your search
   -else
+    =form_tag flights_search_path
+      .searchparams
+        .field class="bdate"
+            = label_tag :date, "Boarding Date :"
+            br
+            = date_field_tag 'date', params[:date], class:"form-control"
+        br
+        .field class="from"
+            = label_tag :source, "From :"
+            br
+            = select_tag "source", options_from_collection_for_select(Flight.distinct.select(:source), "source", "source", params[:source]), { class:"form-control" }
+            '&nbsp
+        .field class="to"
+            = label_tag :destination, "To :"
+            br
+            = select_tag "destination", options_from_collection_for_select(Flight.distinct.select(:destination), "destination", "destination", params[:destination]), {class:"form-control"}
+            '&nbsp
+        .searchbuttonsearch
+          = submit_tag "Search", class:"btn btn-primary"
+
+    br
+    br
     table class="table table-hover"
       thead
         tr
@@ -55,10 +78,10 @@
           th
           th
 
-    
+
       tbody
         - @flights.each do |flight|
-        
+      
           tr
             td = flight.date
             td = readable_time(flight.departure)
@@ -67,11 +90,11 @@
             td = flight.destination
             td = flight.aeroplane.model
             - if current_user
-              td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false}
+                td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false}
             - else
-              td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false }
-
+                td = link_to "Book Ticket", {:controller => "tickets", :action => "new", :flight_id => flight.id },  data: { turbolinks: false }
             
+
 
 
 

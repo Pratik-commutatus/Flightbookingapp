@@ -1,6 +1,36 @@
-h1 Enter Passenger Details :
+- current_flight = Flight.find(params[:flight_id]) 
+br
+.ticket_flight_details
+    
+    h4 = " Travelling From:  #{current_flight.source} "
+    '
+    '
+    h4 = " Travelling To:  #{current_flight.destination} "
+    '
+    '
+hr
+.ticket_flight_details2
+    h4 = " Date: #{current_flight.date} "
+    '
+    '
+    .times
+        h4 = " Departure Time: #{readable_time(current_flight.departure)} "
+        
+        h4 = " Arrival Time: #{readable_time(current_flight.arrival)} "
+hr
+
+    
+    
+
+
+
+h3 
+    b Enter Passenger Details :
+br
 br
 
 == render 'form'
 br
 = link_to 'Back', tickets_path, class:"backtext"
+br
+br
