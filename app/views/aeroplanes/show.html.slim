@@ -1,11 +1,44 @@
 
 div class="cardform"
+  .aeroplanemodel
+    p
+      strong Model: &nbsp
+      = @aeroplane.model
+    p
+      strong Total number of seats: &nbsp
+      = @aeroplane.number_of_seats
+    br
+    br
   p
-    strong Model: 
-    = @aeroplane.model
+    strong Number of First Class seats: &nbsp
+    = @aeroplane.first_class_rows * @aeroplane.first_class_columns
   p
-    strong Number of seats: 
-    = @aeroplane.number_of_seats
+    strong Fisrt Class Base Fare: &nbsp
+    = "Rs. #{@aeroplane.first_class_base_fare}"
+  p
+    strong Total worth of First Class: &nbsp
+    = "Rs. #{@aeroplane.first_class_rows * @aeroplane.first_class_columns*@aeroplane.first_class_base_fare}"
+  br
+  p
+    strong Number of Business Class seats: &nbsp
+    = @aeroplane.business_rows * @aeroplane.business_columns
+  p
+    strong Business Class Base Fare: &nbsp
+    = "Rs. #{@aeroplane.business_base_fare}"
+  p
+    strong Total worth of Business Class: &nbsp
+    = "Rs. #{@aeroplane.business_rows * @aeroplane.business_columns*@aeroplane.business_base_fare}"
+  br
+  p
+    strong Number of Economy Class seats: &nbsp
+    = @aeroplane.economy_rows * @aeroplane.economy_columns
+  p
+    strong Economy Class Base Fare: &nbsp
+    = "Rs. #{@aeroplane.economy_base_fare}"
+  p
+    strong Total worth of Economy Class: &nbsp
+    = "Rs. #{@aeroplane.economy_rows * @aeroplane.economy_columns*@aeroplane.economy_base_fare}"
+  br
 
   => link_to 'Edit', edit_aeroplane_path(@aeroplane)
   '

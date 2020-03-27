@@ -1,11 +1,17 @@
 class Ticket < ApplicationRecord
     belongs_to :passenger, dependent: :destroy
-    belongs_to :user, dependent: :destroy
+    belongs_to :user
     belongs_to :flight
     accepts_nested_attributes_for :passenger, allow_destroy: true
 
+    validates :seat_number, presence: true
+    
+    
+
     
     before_save :ticket_details
+
+    
 
     def ticket_details
 

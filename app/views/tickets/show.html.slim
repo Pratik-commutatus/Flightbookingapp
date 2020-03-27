@@ -1,16 +1,36 @@
-
-.cardform
+.ticketshow
+  h1 Ticket Details
+.cardform.ticketcard
+  
   p
-    strong Seat class: 
+    strong Passenger Name: &nbsp; 
+    = "#{@ticket.passenger.name} ( #{@ticket.passenger.age}, #{@ticket.passenger.gender} )"
+  p
+    strong Travelling From: &nbsp; 
+    = @ticket.flight.source
+  p
+    strong Travelling To: &nbsp; 
+    = @ticket.flight.destination
+  p
+    strong Date of Travel: &nbsp; 
+    = @ticket.flight.date
+  p
+    strong Departure time: &nbsp; 
+    = readable_time(@ticket.flight.departure)
+  p
+    strong Arrival at Destination: &nbsp; 
+    = readable_time(@ticket.flight.arrival)
+  p
+    strong Seat class: &nbsp; 
     = @ticket.seat_class
   p
-    strong Seat number: 
+    strong Seat number: &nbsp; 
     = @ticket.seat_number
   p
-    strong Total amount: 
-    = @ticket.total_amount
+    strong Total amount: &nbsp; 
+    = "Rs. #{@ticket.total_amount}"
   p
-    strong Pnr: 
+    strong PNR: &nbsp; 
     = @ticket.pnr
 
   => link_to 'Edit', edit_ticket_path(@ticket), data: { turbolinks: false}

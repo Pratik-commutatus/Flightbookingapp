@@ -4,7 +4,7 @@ class Passenger < ApplicationRecord
     has_many :tickets
     has_many :flights, through: :tickets
     
-    validates :name, presence: {message:": please enter something"}
-    validates :age, presence: {message:": please enter something"}
-    validates :email, uniqueness: {message:": Ticket already exists"}
+    validates :name, presence: true
+    validates :age, presence: true
+    validates :email, presence: true
 end

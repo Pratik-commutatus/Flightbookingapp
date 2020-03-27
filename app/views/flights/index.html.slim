@@ -18,8 +18,8 @@ table class="table table-hover"
     - @flights.each do |flight|
       tr
         td = flight.date
-        td = flight.departure
-        td = flight.arrival
+        td = readable_time(flight.departure)
+        td = readable_time(flight.arrival)
         td = flight.source
         td = flight.destination
         td = flight.aeroplane.model

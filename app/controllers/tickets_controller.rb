@@ -1,8 +1,9 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action do 
-     redirect_to new_user_session_path unless current_user
-  end
+  # before_action do 
+  #    redirect_to new_user_session_path unless current_user
+  # end
+  before_action :authenticate_user!
 
   # GET /tickets
   # GET /tickets.json
@@ -19,6 +20,7 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @ticket.flight_id = params[:flight_id] 
     @ticket.build_passenger
     @aeroplanes=Aeroplane.all
   end

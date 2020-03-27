@@ -248,7 +248,7 @@
         border-radius: 20px;
         background-image: linear-gradient(rgb(236, 235, 235), rgba(193, 248, 255, 0.418));
         box-shadow: 6px 6px 12px grey;
-      
+        
         
     }
     .linktobutton{
@@ -327,3 +327,16 @@
         display: flex;
         justify-content: space-between;
     }
+    .ticketshow{
+        text-align: center;
+    }
+    .ticketcard{
+        margin-top: 60px;
+    }
+    .aeroplanemodel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    

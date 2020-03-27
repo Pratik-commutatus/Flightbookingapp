@@ -5,7 +5,7 @@ table class="table table-hover"
     tr
       th Model
       th Number of seats
-      th FC fare
+      th First Class fare
       th Business fare
       th Economy fare
       th
@@ -17,9 +17,9 @@ table class="table table-hover"
       tr
         td = aeroplane.model
         td = aeroplane.number_of_seats
-        td = aeroplane.first_class_base_fare
-        td = aeroplane.business_base_fare
-        td = aeroplane.economy_base_fare
+        td = "Rs. #{aeroplane.first_class_base_fare}"
+        td = "Rs. #{aeroplane.business_base_fare}"
+        td = "Rs. #{aeroplane.economy_base_fare}"
         td = link_to 'Show', aeroplane
         td = link_to 'Edit', edit_aeroplane_path(aeroplane)
         td = link_to 'Destroy', aeroplane, data: { confirm: 'Are you sure?' }, method: :delete

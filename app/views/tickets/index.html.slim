@@ -3,19 +3,25 @@ br
 table class="table table-hover"
   thead
     tr
-      th Passenger name
-      th Seat class
-      th Seat number
+      th Passenger 
+      th From
+      th To
+      th Date
+      th Departure
+      th Class
+      th Seat
       th Total amount
       th Pnr
-      th
-      th
-      th
+      
 
   tbody
     - @tickets.each do |ticket|
       tr
         td = ticket.passenger.name
+        td = ticket.flight.source
+        td = ticket.flight.destination
+        td = ticket.flight.date
+        td = readable_time(ticket.flight.departure)
         td = ticket.seat_class
         td = ticket.seat_number
         td = "Rs." + "#{ticket.total_amount}"
