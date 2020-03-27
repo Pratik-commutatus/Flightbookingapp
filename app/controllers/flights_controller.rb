@@ -67,7 +67,11 @@ class FlightsController < ApplicationController
     @date = params[:date]
     @source = params[:source]
     @destination= params[:destination]
-    @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ? AND departure > ? AND date >= ?", @source, @destination, @date, Time.now.strftime("%H:%M:%S"), Date.today)
+    if @date == Time.now.strftime("%Y-%m-%d")
+      @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ? AND departure > ?", @source, @destination, @date, Time.now.strftime("%H:%M:%S"))
+    else
+      @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ?", @source, @destination, @date)
+    end
   end
 
   private

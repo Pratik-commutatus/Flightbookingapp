@@ -22,7 +22,7 @@
         .field class="bdate"
             = label_tag :date, "Boarding Date :"
             br
-            = date_field_tag 'date', Date.today, class:"form-control"
+            = date_field_tag 'date', params[:date], { class:"form-control", required: true}
         br
         .field class="from"
             = label_tag :source, "From :"
