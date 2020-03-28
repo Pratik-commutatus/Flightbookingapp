@@ -70,7 +70,7 @@ class FlightsController < ApplicationController
     if @date == Time.now.strftime("%Y-%m-%d")
       @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ? AND departure > ?", @source, @destination, @date, Time.now.strftime("%H:%M:%S"))
     else
-      @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ?", @source, @destination, @date)
+      @flights=Flight.where("source LIKE ? AND destination LIKE ? AND date = ? AND date > ?", @source, @destination, @date, Time.now.strftime("%Y-%m-%d"))
     end
   end
 
