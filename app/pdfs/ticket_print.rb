@@ -23,7 +23,7 @@ class TicketPrint < Prawn::Document
 
         Seat Class: #{@ticket.seat_class}
 
-        Seat Number: #{@ticket.seat_class}
+        Seat Number: #{@ticket.seat_number}
 
         Total Amount: Rs. #{@ticket.total_amount}
 

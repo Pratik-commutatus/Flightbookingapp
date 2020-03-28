@@ -35,6 +35,6 @@
 
   => link_to 'Edit', edit_ticket_path(@ticket), data: { turbolinks: false}
   '
-  =< link_to 'Back', tickets_path
+  =< link_to 'See All Tickets', tickets_path
   br
   = link_to "Print Ticket (PDF)", ticket_path(@ticket, format: "pdf"), class:"btn btn-outline-info printbtn"
