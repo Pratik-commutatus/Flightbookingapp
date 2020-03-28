@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <style>
+    body {
+      font-family: Helvetica, arial, sans-serif;
+      font-size: 15px;
+      background: #f6f6f6;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <table style="background-color: white; width: 600px; margin-left: auto; margin-right: auto; padding: 40px; border: 1px solid #DDDDDD;">
+      <tbody>
+        <tr>
+          <td>
+            <table>
+              <tr>
+                <td style="text-align: center">
+                  <img src="https://cdn.dribbble.com/users/788099/screenshots/7523273/media/ab6e54bc49782a78a3096bcfb7b31eed.jpg" alt="" style="width:100%;">
+                  
+                  <h1 style="font-size: 22px; ">Your Ticket Details:</h1>
+                  
+                </td>
+              </tr>
+            </table>
+            <table style="display:table; border-collapse: collapse; width: 100%; margin-bottom: 40px; color: black;">
+              <thead>
+               
+                <tr>
+                  <th style="text-align: left; font-size: 14px;">Passenger:</th>
+                  <th style="text-align: left; font-size: 14px;">Date:</th>
+                  <th style="text-align: left; font-size: 14px;">From:</th>
+                  <th style="text-align: left; font-size: 14px;">To:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><p><%= @ticket.passenger.name %></p></td>
+                  <td><p><%= @ticket.flight.date %></p></td>
+                  <td><p><%= @ticket.flight.source %></p></td>
+                  <td><p><%= @ticket.flight.destination %></p></td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="display:table; border-collapse: collapse; width: 100%; margin-bottom: 40px;">
+              <thead>
+               
+                <tr>
+                  <th style="text-align: left; font-size: 14px;">Departure:</th>
+                  <th></th>
+                  <th style="text-align: left; font-size: 14px;">Arrival:</th>
+                  <th style="text-align: left; font-size: 14px;">Seat Number:</th>
+                  <th style="text-align: left; font-size: 14px;">PNR:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><p><%= readable_time(@ticket.flight.departure) %></p></td>
+                  <td></td>
+                  <td><p><%= readable_time(@ticket.flight.arrival)%></p></td>
+                  <td><p><%= "#{@ticket.seat_number} (#{@ticket.seat_class})"%></p></td>
+                  <td><p><%= @ticket.pnr%></p></td>
+                </tr>
+              </tbody>
+            </table>
+            <p></p>
+            
+            <p>We look forward to flying with you!</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
