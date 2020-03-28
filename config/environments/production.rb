@@ -4,6 +4,22 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.require_master_key = true
+  
+  config.cache_classes = false
+  config.action_mailer.delivery_method = :smtp
+  #replace with your own url
+  # config.action_mailer.perform_deliveries = true
+# SMTP settings for gmail
+config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 25,
+  :user_name            => 'pratik@commutatus.com',
+  :password             => 'lwlwfaildnhxxrln',
+  :authentication       => "plain",
+  :enable_starttls_auto => true
+}
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -109,5 +125,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.smtp_settings = { port: 25 }
+  
 end
