@@ -44,9 +44,21 @@ class TicketsController < ApplicationController
     
     respond_to do |format|
       if @ticket.save
-        TicketMailer.with(ticket: @ticket).new_ticket_email.deliver
+        
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created. You will recieve a confirmation email soon.' }
         format.json { render :show, status: :created, location: @ticket }
+
+
+        ActionMailer::Base.smtp_settings = {
+          :address              => "smtp.gmail.com",
+          :port                 => 587,
+          :user_name            => 'pratik@commutatus.com',
+          :password             => 'lwlwfaildnhxxrln',
+          :authentication       => "plain",
+          :enable_starttls_auto => true
+        }
+        TicketMailer.with(ticket: @ticket).new_ticket_email.deliver
+
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
