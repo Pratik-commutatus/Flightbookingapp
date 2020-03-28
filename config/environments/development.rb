@@ -13,7 +13,7 @@ Rails.application.configure do
 # SMTP settings for gmail
 config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
-  :port                 =>  25,
+  :port                 => 25,
   :user_name            => 'pratik@commutatus.com',
   :password             => 'lwlwfaildnhxxrln',
   :authentication       => "plain",
