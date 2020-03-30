@@ -332,6 +332,7 @@
     }
     .ticketcard{
         margin-top: 60px;
+        margin-bottom: 80px;
     }
     .aeroplanemodel{
         display: flex;
@@ -362,4 +363,10 @@
         margin: 0 auto;
         font-size: 18px !important;
         
+    }
+    .show_ticket_bottom{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+        margin: 0 auto;
     }

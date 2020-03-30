@@ -57,7 +57,7 @@ class TicketsController < ApplicationController
           :authentication       => "plain",
           :enable_starttls_auto => true
         }
-        TicketMailer.with(ticket: @ticket).new_ticket_email.deliver
+        TicketMailer.with(ticket: @ticket).new_ticket_email.deliver_later
 
       else
         format.html { render :new }

@@ -35,6 +35,13 @@
 
   => link_to 'Edit', edit_ticket_path(@ticket), data: { turbolinks: false}
   '
+  '
   =< link_to 'See All Tickets', tickets_path
   br
   = link_to "Print Ticket (PDF)", ticket_path(@ticket, format: "pdf"), class:"btn btn-outline-info printbtn"
+  = hidden_field_tag :flight_id, params[:flight_id]
+  br
+.show_ticket_bottom
+  = link_to "Add more passengers", {:controller => "tickets", :action => "new", :flight_id => @ticket.flight.id}, {class:"btn btn-dark btn-lg", style:"color:white !important;", data: { turbolinks: false}} 
+  br
+  = link_to 'Book Another Flight', flights_search_path, {class:"btn btn-dark btn-lg", style:"color:white !important;"}
